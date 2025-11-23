@@ -1,0 +1,203 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\title{Data Mining Report \\ \Large Analysis of Global Education Enrolments}
+\author{
+Mohd Umar \and
+Yugal Verma \and
+Adam Bielecki \and
+Verna Perumal \and
+Kormaz Deniz \and
+Labidi Samar
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report documents the solution for the Data Mining Sheet 4 exercises. 
+The objective was to gather, inspect, clean, and visualise real-world datasets regarding 
+Global Education. The analysis covers three distinct levels of education:
+\textbf{Primary (Ex 1)}, \textbf{Secondary (Ex 2)}, and \textbf{Tertiary (Ex 3)}.
+Across all datasets, consistent data cleaning strategies were applied to handle non-numerical 
+units and missing gender attributes. The results highlight distinct trends, particularly 
+the shifting gender balance as education levels increase.
+\end{abstract}
+
+% ==========================================
+% EXERCISE 1: PRIMARY EDUCATION
+% ==========================================
+\section{Exercise 1: Primary Education Analysis}
+
+\subsection{Introduction \& Data Cleaning}
+The first dataset contained annual primary education enrolment figures. Key data quality 
+challenges included mixed units (percentages vs numbers) and missing male data.
+The cleaning process involved:
+\begin{enumerate}
+    \item \textbf{Renaming:} Simplifying \textit{Reference Area} to \textit{Country}.
+    \item \textbf{Filtering:} Removing rows where \textit{Units of measurement} was not "Number".
+    \item \textbf{Feature Engineering:} Calculating Male enrolments using: $ \text{Male} = \text{All Genders} - \text{Female} $.
+\end{enumerate}
+
+\subsection{Visualisation (Primary Education)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{in27sectiongraph-exercise1.png}
+    \caption{Ex 1: Total Global Primary Enrolments over the years.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{in26sectiongraph-exercise1.png}
+    \caption{Ex 1: Primary Enrolments by Gender (All Genders vs Female).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{in32sectiongraph-exercise1.png}
+    \caption{Ex 1: Derived Male vs Female Primary Enrolments.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{in34sectiongraph-exercise1.png}
+    \caption{Ex 1: Distribution of Primary Enrolments (Log Scale).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{in38sectiongraph-exercise1.png}
+    \caption{Ex 1: Top 20 Countries by Total Female Primary Enrolments.}
+\end{figure}
+
+\clearpage
+
+% ==========================================
+% EXERCISE 2: SECONDARY EDUCATION
+% ==========================================
+\section{Exercise 2: Secondary Education Analysis}
+
+\subsection{Overview}
+Following the methodology established in Exercise 1, we analyzed the \texttt{secondary.csv} dataset. 
+The cleaning steps were identical, focusing on unit standardization and deriving the male population count.
+
+\subsection{Visualisation (Secondary Education)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{in10sectiongraph-exercise2.png}
+    \caption{Ex 2: Total Global Secondary Enrolments. A steady increase is observed until the reporting cut-off.}
+    \label{fig:ex2-global}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{in[]sectiongraph-exercise2.png}
+    \caption{Ex 2: Secondary Enrolments by Gender (All Genders vs Female).}
+    \label{fig:ex2-gender-trend}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{in[2]sectiongraph-exercise2.png}
+    \caption{Ex 2: Male vs Female Secondary Enrolments. Males consistently outnumber females, though the gap appears narrower than in primary education.}
+    \label{fig:ex2-male-female}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{in41sectiongraph-exercise2.png}
+    \caption{Ex 2: Distribution of Secondary Enrolments (Log Scale).}
+    \label{fig:ex2-hist}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{in39sectiongraph-exercise2.png}
+    \caption{Ex 2: Top 20 Countries by Total Female Secondary Enrolments.}
+    \label{fig:ex2-top20}
+\end{figure}
+
+\clearpage
+
+% ==========================================
+% EXERCISE 3: TERTIARY EDUCATION
+% ==========================================
+\section{Exercise 3: Tertiary Education Analysis}
+
+\subsection{Overview}
+The final analysis focused on \texttt{tertiary.csv}, representing higher education enrolments. 
+While the data structure mirrored the previous datasets, the trends revealed in this specific education 
+level differed significantly from Primary and Secondary education.
+
+\subsection{Strategy and Processing}
+The cleaning strategy remained consistent to ensure comparability:
+\begin{itemize}
+    \item \textbf{Cleaning:} Rows with non-numerical units were removed. Redundant columns (\textit{Age group}) were dropped.
+    \item \textbf{Transformation:} The "Male" attribute was derived via the formula $ \text{Male} = \text{Total} - \text{Female} $.
+    \item \textbf{Observation:} Unlike the previous datasets, this file appears to contain aggregated regional data (e.g., "Developing Regions") alongside individual country data, as seen in the Top 20 plot.
+\end{itemize}
+
+\subsection{Visualisation (Tertiary Education)}
+
+\begin{figure}[H]
+    \centering
+    % In [10]
+    \includegraphics[width=0.95\textwidth]{in10sectiongraph-exercise3.png}
+    \caption{Ex 3: Total Global Tertiary Enrolments over the years. The growth curve is steeper compared to primary education, reflecting the global expansion of higher education access.}
+    \label{fig:ex3-global}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % In [11]
+    \includegraphics[width=0.95\textwidth]{in11sectiongraph-exercise3.png}
+    \caption{Ex 3: Enrolments by Gender (All Genders vs Female). The female proportion appears visibly closer to the total compared to previous exercises.}
+    \label{fig:ex3-gender-trend}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % In [14]
+    \includegraphics[width=0.95\textwidth]{in14sectiongraph-exercise3.png}
+    \caption{Ex 3: Male vs Female Tertiary Enrolments. \textbf{Significant Finding:} Unlike primary and secondary education, female enrolment in tertiary education catches up to and eventually surpasses male enrolment around 2005.}
+    \label{fig:ex3-male-female}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % In [16]
+    \includegraphics[width=0.95\textwidth]{in16sectiongraph-exercise3.png}
+    \caption{Ex 3: Distribution of Tertiary Enrolments (Log Scale). The distribution remains right-skewed.}
+    \label{fig:ex3-hist}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % In [19]
+    \includegraphics[width=0.95\textwidth]{in19sectiongraph-exercise3.png}
+    \caption{Ex 3: Top 20 Regions/Countries by Female Enrolment. Note the presence of "MDG\_Developing regions", indicating that this dataset contains aggregated regional data.}
+    \label{fig:ex3-top20}
+\end{figure}
+
+\section{Conclusion}
+The comprehensive analysis of Primary, Secondary, and Tertiary education reveals a clear narrative.
+While Primary and Secondary education show a historical male dominance in enrolment numbers, 
+\textbf{Tertiary education shows a reversal of this trend}, with female participation exceeding 
+male participation in the most recent years of the dataset. 
+
+Common data quality issues—specifically the lack of explicit male data and inconsistent 
+units—were successfully mitigated through a unified Python preprocessing pipeline, allowing 
+for accurate comparative analysis across all three education levels.
+
+\end{document}
