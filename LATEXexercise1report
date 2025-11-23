@@ -1,0 +1,128 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{caption}
+
+\title{Data Mining Report \\ \Large Exercise 1: Primary Education Enrolment Analysis}
+\author{
+Mohd Umar \and
+Yugal Verma \and
+Adam Bielecki \and
+Verna Perumal \and
+Kormaz Deniz \and
+Labidi Samar
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report presents the analysis completed for Exercise 1 of the Data Mining course.
+The objective was to inspect, clean, and visualise a dataset containing global primary 
+school enrolment statistics. The raw dataset contained various irregularities, including 
+non-numerical units and missing gender-specific breakdowns for males. Through a sequence 
+of data preparation steps—including feature engineering to derive missing values—the 
+dataset was transformed into a consistent form. The following pages document the cleaning 
+methodology and showcase the resulting global trends, gender comparisons, and distributions.
+\end{abstract}
+
+\section{Introduction}
+
+The dataset provided for Exercise 1 contains annual primary education enrolment figures
+for multiple countries. Before meaningful analysis could be performed, several data quality
+challenges had to be addressed. These included mixed units of measurement (absolute numbers 
+vs. percentages), unused attributes, and the absence of a specific "Male" category (data 
+was provided only as "All genders" and "Female").
+
+The aim of this exercise was therefore:
+\begin{enumerate}
+    \item To perform structured data cleaning and type conversion.
+    \item To engineer new features (specifically calculating Male enrolments).
+    \item To produce visual representations regarding global trends, distributions, and top-ranking countries.
+\end{enumerate}
+
+\section{Group Members}
+
+\begin{itemize}
+    \item Mohd Umar
+    \item Yugal Verma
+    \item Adam Bielecki
+    \item Verna Perumal
+    \item Kormaz Deniz
+    \item Labidi Samar
+\end{itemize}
+
+\section{Data Cleaning and Processing Overview}
+
+The preparation of the dataset followed a series of clearly defined steps:
+
+\begin{itemize}
+    \item \textbf{Initial inspection \& Renaming:} Verbose labels such as \textit{Reference Area} were renamed to \textit{Country} for clarity.
+    \item \textbf{Filtering by unit:} Rows where \textit{Units of measurement} was not "Number" were removed to ensure analytical consistency.
+    \item \textbf{Type consistency:} Year and Enrolment columns were converted to integer and float types respectively.
+    \item \textbf{Feature Engineering (Deriving Male Data):} A critical observation was that "Male" data was missing. We pivoted the dataset and calculated the missing column using the formula: $ \text{Male} = \text{All Genders} - \text{Female} $.
+\end{itemize}
+
+\section{Visualisation and Analysis}
+
+\subsection*{1. Global Enrolment Trends}
+
+\begin{figure}[H]
+    \centering
+    % In [27] in your code corresponds to the Global Enrolment Line Plot
+    \includegraphics[width=0.97\textwidth]{in27sectiongraph-exercise1.png}
+    \caption{Total Global Enrolments over the years. A distinct drop is observed in the final years (2014-2015), suggesting incomplete data reporting for that period.}
+    \label{fig:global_trend}
+\end{figure}
+
+\subsection*{2. Gender Breakdown (All vs Female)}
+
+\begin{figure}[H]
+    \centering
+    % In [26] in your code corresponds to Enrolments by Gender Over Time
+    \includegraphics[width=0.97\textwidth]{in26sectiongraph-exercise1.png}
+    \caption{Enrolments by Gender (All Genders vs Female). This plot highlights the raw gap between the total student population and the female subset.}
+    \label{fig:gender_trend}
+\end{figure}
+
+\subsection*{3. Male vs Female Comparison}
+
+\begin{figure}[H]
+    \centering
+    % In [32] in your code corresponds to the Male vs Female comparison
+    \includegraphics[width=0.97\textwidth]{in32sectiongraph-exercise1.png}
+    \caption{Comparison of calculated Male vs Female enrolments. This derived visualisation confirms that male enrolment consistently exceeds female enrolment globally.}
+    \label{fig:male_female}
+\end{figure}
+
+\subsection*{4. Data Distribution}
+
+\begin{figure}[H]
+    \centering
+    % In [34] in your code corresponds to the Histogram
+    \includegraphics[width=0.97\textwidth]{in34sectiongraph-exercise1.png}
+    \caption{Distribution of Enrolments (Log Scale). The histogram illustrates the frequency of enrolment sizes, providing insight into the scale differences between countries.}
+    \label{fig:histogram}
+\end{figure}
+
+\subsection*{5. Top Countries by Female Enrolment}
+
+\begin{figure}[H]
+    \centering
+    % In [38] in your code corresponds to the Bar Plot
+    \includegraphics[width=0.97\textwidth]{in38sectiongraph-exercise1.png}
+    \caption{Top 20 Countries by Total Female Primary Enrolments. India and China are the clear outliers with the highest cumulative student populations.}
+    \label{fig:top20}
+\end{figure}
+
+\section{Conclusion}
+
+Exercise 1 demonstrated the importance of careful data cleaning. The presence of mixed reporting units and missing attributes (such as the Male category) required specific preprocessing steps. By deriving the male population data and standardising the units, we were able to visualize that while global enrolment trends are similar across genders, a persistent gap remains between male and female education participation.
+
+\end{document}
