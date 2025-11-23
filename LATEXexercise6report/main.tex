@@ -1,0 +1,120 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{geometry}
+
+
+\geometry{margin=1in}
+
+\begin{document}
+
+\title{Correlation Analysis of Life Expectancy Data}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+The aim of this analysis is to identify correlations within a dataset containing life expectancy values for males, females, and the combined population (both sexes) across different years and countries.  
+We compute Pearson correlation coefficients and support our findings with appropriate visualisations. The results help us understand how life expectancy evolves over time and how strongly it relates across genders.
+
+\section{Methodology}
+
+We selected all numerical variables in the dataset for correlation analysis:
+
+\begin{itemize}
+    \item \textbf{Year}
+    \item \textbf{LifeExpectancy\_male}
+    \item \textbf{LifeExpectancy\_female}
+    \item \textbf{LifeExpectancy\_both}
+\end{itemize}
+
+Pearson correlations were computed in Python using pandas, and visualisations were generated using seaborn and matplotlib.  
+Three plots were produced to support the interpretation:
+
+\begin{itemize}
+    \item Distribution of life expectancy (both sexes)
+    \item Scatter plot of male vs female life expectancy
+    \item Overlapping distributions of male, female, and both sexes
+\end{itemize}
+
+\section{Results}
+
+\subsection{Correlation Matrix}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+ & Year & Male & Female & Both \\
+\midrule
+Year & 1.0000 & 0.7672 & 0.7424 & 0.7562 \\
+Male & 0.7672 & 1.0000 & 0.9904 & 0.9976 \\
+Female & 0.7424 & 0.9904 & 1.0000 & 0.9975 \\
+Both & 0.7562 & 0.9976 & 0.9975 & 1.0000 \\
+\bottomrule
+\end{tabular}
+\caption{Pearson correlation coefficients between numerical variables.}
+\label{tab:corr}
+\end{table}
+
+\subsection{Visualisations}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{distribution.png}
+\caption{Distribution of life expectancy (both sexes, all countries, all years).}
+\label{fig:dist_both}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{country-year.png}
+\caption{Male vs female life expectancy for each country-year. The dashed red line shows the reference $y=x$.}
+\label{fig:male_female}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{life_expectancy.png}
+\caption{Distribution of life expectancy for males, females and both sexes.}
+\label{fig:dist_gender}
+\end{figure}
+
+\subsection{Interpretation of Results}
+
+Figure~\ref{fig:dist_both} shows the overall distribution of life expectancy for both sexes.  
+Most observations lie between 60 and 85 years, suggesting a concentrated and stable pattern across countries.
+
+Figure~\ref{fig:male_female} visualises the relationship between male and female life expectancy.  
+The points lie close to a straight line, confirming the extremely strong correlation between the two variables ($r \approx 0.99$).  
+Almost all points are above the $y=x$ line, indicating that female life expectancy is nearly always higher.
+
+Figure~\ref{fig:dist_gender} compares the distributions for male, female, and combined life expectancy.  
+The curves overlap heavily and have almost identical shapes.  
+The combined “both” distribution lies between male and female, consistent with the computed correlations (all $r > 0.99$).
+
+\section{Discussion}
+
+The numerical and visual analyses show that life expectancy behaves very similarly across genders.  
+The extremely high correlations between male, female, and combined life expectancy imply that improvements in health conditions or societal factors affect the entire population uniformly.
+
+Additionally, all three life expectancy measures show strong positive correlation with Year ($r \approx 0.75$).  
+This indicates a clear global trend of increasing life expectancy over time, likely due to improvements in healthcare, hygiene, nutrition and education.
+
+However, these findings describe associations, not causal relationships.  
+Other socioeconomic factors may contribute to the observed patterns but are not included in this simple analysis.
+
+\section{Conclusion}
+
+The analysis reveals that:
+
+\begin{itemize}
+    \item Life expectancy for males, females, and both sexes is almost perfectly correlated.
+    \item Female life expectancy is consistently higher than male life expectancy.
+    \item Life expectancy has increased steadily over time.
+\end{itemize}
+
+These results help to understand global health patterns and provide a foundation for further studies using additional socioeconomic variables.
+
+\end{document}
