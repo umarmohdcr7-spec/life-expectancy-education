@@ -191,73 +191,61 @@ The cleaning strategy remained consistent to ensure comparability:
 \end{figure}
 
 % ==========================================
-% EXERCISE 4: PUBLIC EDUCATION EXPENDITURE (% OF GNI)
+% EXERCISE 4: PUBLIC EDUCATION EXPENDITURE (% OF GDP)
 % ==========================================
-\section{Exercise 4: Public Education Expenditure as \% of GNI}
+\section{Exercise 4: Public Education Expenditure as \% of GDP}
 
 \subsection{Overview}
-This dataset describes the annual public expenditure on education expressed as a
-percentage of Gross National Income (GNI). Unlike the previous datasets focused on
-student enrolment numbers, this indicator reflects how much of a country's economic
-output is invested into its education system. Each row in the dataset corresponds
-to a single country-year pair and contains one numeric value representing the share
-of national income spent on education.
+This dataset contains annual public expenditure on education expressed as a
+percentage of Gross Domestic Product (GDP). Unlike the previous datasets focused 
+on student enrolments, this indicator reflects how much of a country's economic 
+output is invested into its education system. Each row corresponds to a single 
+country-year observation.
 
 \subsection{Data Cleaning}
-The raw data obtained from \texttt{data.un.org} contained several inconsistencies
-that required preprocessing. The following cleaning steps were applied:
+The raw dataset obtained from \texttt{data.un.org} required several preprocessing
+steps to ensure consistency:
 \begin{itemize}
-    \item \textbf{Filtering units:} Only rows where the \textit{units\_of\_measurement}
-    column was ``Percent'' were retained.
-    \item \textbf{Removing unusable entries:} Missing or undefined values (typically
-    represented as ``..'') were dropped.
-    \item \textbf{Non-country entries:} Region-level aggregates such as ``Arab States'',
-    ``Landlocked Developing Countries'', and other non-country entities were removed.
-    \item \textbf{Type conversion:} The expenditure values under
-    \textit{observation\_value} were converted from string to floating-point numeric format.
-    \item \textbf{Column consistency:} The naming structure of the dataset was retained
-    (\textit{reference\_area} for country and \textit{time\_period} for year) to match
-    the cleaned file stored in the repository.
+    \item \textbf{Filtering units:} Only entries where the unit was ``Percent'' were retained.
+    \item \textbf{Removing unusable entries:} Missing values (``..'') and non-numeric entries 
+    were dropped.
+    \item \textbf{Non-country entries:} Regional aggregates such as ``Arab States'' and 
+    ``Landlocked Developing Countries'' were removed.
+    \item \textbf{Type conversion:} The \textit{observation\_value} column was converted 
+    to numeric floating-point values.
+    \item \textbf{Column consistency:} Column names were cleaned and standardized 
+    (e.g., \textit{Reference Area} → \textit{reference\_area}).
 \end{itemize}
 
-After cleaning, the resulting dataset contains only valid country-year expenditure
-values, with no missing or malformed entries.
-
 \subsection{Visualisation}
-To explore the expenditure distribution and temporal trends, several plots were produced:
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{ex4_exp_gni_trend.png}
-    \caption{Ex 4: Global mean of public education expenditure as \% of GNI over time.}
+    \caption{Ex 4: Global mean public education expenditure as \% of GDP over time.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{ex4_exp_gni_hist.png}
-    \caption{Ex 4: Distribution of education expenditure as \% of GNI across all countries.}
+    \caption{Ex 4: Distribution of education expenditure as \% of GDP across all countries.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{ex4_exp_gni_top20.png}
-    \caption{Ex 4: Top 20 countries with the highest expenditure as \% of GNI.}
+    \caption{Ex 4: Top 20 countries by maximum education expenditure as \% of GDP.}
 \end{figure}
 
 \subsection{Observations}
-The cleaned dataset reveals several important patterns:
+Several patterns emerge from the visual analysis:
 \begin{itemize}
-    \item Most countries allocate between \textbf{3\% and 7\%} of their GNI to education.
-    \item A small number of countries consistently spend significantly more than the
-    global average—typically small developing economies.
-    \item Over the observed time span, global expenditure levels remain relatively stable,
-    with slight increases for some regions.
-    \item Year-to-year fluctuations in some countries suggest sensitivity to political or
-    economic changes that influence national budgeting decisions.
+    \item Most countries allocate between \textbf{3\% and 7\%} of their GDP to education.
+    \item Smaller or developing economies tend to show the highest relative expenditure.
+    \item Global spending shows moderate variation across years, with no dramatic shifts.
+    \item Large fluctuations in particular countries suggest political or economic instability.
 \end{itemize}
 
-Overall, Dataset 4 provides a macroeconomic perspective on educational investment
-that complements the enrolment-based datasets examined in earlier exercises.
 
 
 \section{Conclusion}
