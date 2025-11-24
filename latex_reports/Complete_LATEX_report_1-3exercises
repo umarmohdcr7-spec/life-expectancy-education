@@ -259,3 +259,134 @@ units—were successfully mitigated through a unified Python preprocessing pipel
 for accurate comparative analysis across all three education levels.
 
 \end{document}
+
+
+% ==========================================
+% EXERCISE 5: PUBLIC EDUCATION EXPENDITURE (% OF total Government expenditure)
+% ==========================================
+\section{Exercise 45: Public Education Expenditure as \% of total government expenditure}
+
+\subsection{Overview}
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+\title{Analysis of Public Expenditure on Education}
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+
+This dataset reports annual public expenditure on education as a percentage of total government expenditure. 
+Like the last dataset, this indicator shows how much of a government’s budget is allocated to education each year. 
+Each row is a country–year pair with one numeric value—observation_value—measured in percent, indicating the share of total public spending devoted to education. 
+Supporting fields include reference_area (country), time_period (year), and metadata columns (sex, age_group) marked “Not applicable.”
+
+\section{Methodology}
+
+The original raw dataset was cleaned in several steps. 
+Column names were standardised, 
+missing values were removed 
+and duplicate rows were dropped.
+
+
+The variable of interest was:
+
+\begin{itemize}
+    \item \texttt{Observation\_Value}: Public Expenditure on Education (\% of Total Government Expenditure)
+\end{itemize}
+
+To explore a possible correlation between government expenditure and education,
+the education expenditure data were merged with a separate cleaned dataset containing life expectancy
+values for the same countries and years. Two main visualisations were created:
+
+\begin{itemize}
+    \item A line chart showing how education spending changed over time for a
+          selection of countries.
+    \item A scatter plot comparing education spending with life expectancy.
+\end{itemize}
+
+Simple descriptive statistics, such as mean expenditure per country, were also
+computed.
+
+\section{Results}
+
+\subsection{Education Expenditure Over Time}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{education_over_time.png}
+\caption{Public Expenditure on Education (\% of Total Government Expenditure)
+for Germany, India, the United States of America, and Brazil.}
+\end{figure}
+
+The time-series plot shows that education expenditure differs considerably across
+countries. Germany and the United States show relatively stable spending over
+time, while India and Brazil display more noticeable fluctuations. India has the
+highest peak in education expenditure in the early 2000s, while Germany remains
+closer to 10\% throughout the period.
+
+\subsection{Education Spending vs Life Expectancy}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.85\textwidth]{education_vs_lifeexp.png}
+\caption{Scatter plot of education spending (\% of GDP) vs.\ life expectancy for
+a random sample of countries.}
+\end{figure}
+
+The scatter plot suggests a mild upward trend, meaning that countries spending a
+higher share of their resources on education tend to have slightly higher life
+expectancy. However, the points are spread out and not closely aligned, so the
+relationship is not very strong. Some countries with similar education
+expenditure levels show quite different life expectancy values.
+
+\subsection{Average Education Expenditure by Country}
+
+A simple mean comparison shows which countries spend the most on education as a
+share of government expenditure. The highest values in the dataset include:
+
+\begin{itemize}
+    \item Vanuatu (29.3\%)
+    \item Lesotho (26.2\%)
+    \item Tunisia (25.5\%)
+    \item Yemen (24.4\%)
+    \item Kenya (24.4\%)
+\end{itemize}
+
+These countries consistently allocate a relatively large share of their budgets
+to education compared to others in the dataset.
+
+\section{Observations}
+
+Overall, the results show that education expenditure varies widely between
+countries and across years. Some countries invest a stable proportion of their
+government budget in education, while others show stronger fluctuations.
+
+The scatter plot indicates a weak positive association between education
+spending and life expectancy. Although this suggests that higher investment in
+education may be linked to better social outcomes, the relationship is far from
+clear, and many other factors likely influence life expectancy.
+
+\section{Conclusion}
+
+From this we can conclude that:
+
+\begin{itemize}
+    \item Education expenditure levels differ notably between countries.
+    \item Some countries, such as India and Brazil, show strong year-to-year
+          variation in spending.
+    \item There is a slight positive relationship between education expenditure
+          and life expectancy, based on visual inspection.
+\end{itemize}
+
+To obtain more precise conclusions, additional variables such as GDP, health
+spending, or demographic factors would be needed.
+analysis provides a basic overview of education spending patterns worldwide.
+
+\end{document}
